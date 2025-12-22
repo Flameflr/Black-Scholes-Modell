@@ -2,7 +2,7 @@ import math
 from scipy.stats import norm
 
 
-def blackscholesmodell (A, K, r, vol, t): # A = underlying price (Aktienkurs); K = strike Value; r = riskfree Rate; t = Time (in years)
+def blackscholesmodell (A, K, r, vol, t, option): # A = underlying price (Aktienkurs); K = strike Value; r = riskfree Rate; t = Time (in years)
     
     # Second Part:
     
@@ -17,13 +17,18 @@ def blackscholesmodell (A, K, r, vol, t): # A = underlying price (Aktienkurs); K
     # 2.2.2: expected return (German: Erwartbare Rendite)
     expRet = (r - vol ** 2 / 2) * t
 
-    probStrikepriceReached = discount * norm.cdf((rd + expRet) / (vol * math.sqrt(t)))
+    probStrikepriceReached = (rd + expRet) / (vol * math.sqrt(t))
 
     # First part:
     
     # 1.1: if the strike price got reached, how far is the underlying price t1 above the strike price (Wie weit ist die Option im Geld, falls der Strike Price erreicht wurde)
-    HowFarInProfit = A* norm.cdf((rd + (r + vol ** 2 / 2) * t) / (vol * math.sqrt(t))) 
+    HowFarInProfit = (rd + (r + vol ** 2 / 2) * t) / (vol * math.sqrt(t))
 
-    return HowFarInProfit - probStrikepriceReached
+    if option == "call":
+        return A * norm.cdf(HowFarInProfit) - discount * norm.cdf(probStrikepriceReached)
 
-print(blackscholesmodell(80, 100, 0.02, 0.2, 1))
+    elif option == "put":
+        return discount * norm.cdf(-probStrikepriceReached) - A * norm.cdf(-HowFarInProfit)
+
+print(blackscholesmodell(80, 120, 0.02, 0.2, 1, "call"))
+print(blackscholesmodell(80, 120, 0.02, 0.2, 1, "put"))
