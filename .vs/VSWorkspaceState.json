@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\pages"
   ],
-  "SelectedNode": "\\blackscholes.py",
+  "SelectedNode": "\\pages\\2_test.py",
   "PreviewInSolutionExplorer": false
 }
