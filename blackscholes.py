@@ -30,5 +30,5 @@ def blackscholesmodell (A, K, r, vol, t, option): # A = underlying price (Aktien
     elif option == "put":
         return discount * norm.cdf(-probStrikepriceReached) - A * norm.cdf(-HowFarInProfit)
 
-print(blackscholesmodell(80, 120, 0.02, 0.2, 1, "call"))
-print(blackscholesmodell(80, 120, 0.02, 0.2, 1, "put"))
+print(blackscholesmodell(45, 50, 0.018, 0.3, 0.5, "call"))
+print(blackscholesmodell(45, 50, 0.018, 0.3, 0.5, "put"))
