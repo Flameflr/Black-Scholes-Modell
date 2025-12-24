@@ -1,0 +1,12 @@
+Erklärung der Standardabweichungen im Black Scholes Modell:
+
+- d1 und d2 messen: Die Anzahl der Standarsabweichungen vom aktuellen Aktienkurs bis zum Strike Preis.
+- Je näher d1 und d2 bei 0 liegen, desto höher ist die Wahrscheinlichkeit, dass die Option im Geld endet.
+
+
+Erklärung warum d1 die Standardabweichung addiert wird und in d2 subtrahiert wird:
+- d1 berechnet die Wahrscheinlickeit, dass die Option im Geld liegt und die Wahrscheinlichkeit wie viel sie im Geld liegt.
+- wenn man nun davon ausgeht, dass die Option im Geld liegt, dann ist eine höhere Standartabweichung viel lukrativer als eine niedrige.
+- Dadurch wird die Option wertvoller.
+
+- d2 hingegen sieht die Standartabweichung als ein Risiko, da durch eine höhere Standardabweichung das Riskiko, dass die Option aus dem Geld liegt, erhöht ist.
