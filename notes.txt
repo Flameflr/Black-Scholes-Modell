@@ -10,3 +10,17 @@ Erklärung warum d1 die Standardabweichung addiert wird und in d2 subtrahiert wir
 - Dadurch wird die Option wertvoller.
 
 - d2 hingegen sieht die Standartabweichung als ein Risiko, da durch eine höhere Standardabweichung das Riskiko, dass die Option aus dem Geld liegt, erhöht ist.
+
+
+
+Erklärung wie Aktiensimulationen professionell erstellt werden:
+
+- Die Erzeugung eines Aktienkurses basiert darauf, dass Aktienkurse normalverteilt sind. Bedeutet: Das die Gaußsche Glockenkurve angewendet werden kann und die Aktien um diesen Wert schwanken.
+- Dafür wird die Standardabweichung (Volatilität) der Aktie benötigt.
+
+- Aufbau einer Simulation:
+- np.random.normal erzeugt Zufallszahlen aus einer Normalverteilung (auch Gaußsche Glockenkurve genannt)
+- Genau das Verhalten, das man für tägliche Aktienbewegungen annimmt
+- Mit np.cumsum werden die erzeugten log werte aufsummiert. Bedeutet (a, a+b, a+b+c, ...)
+- dann wird mit np.exp() die Exponentialfunktion angewendet um die logarithmischen Renditen wieder in normale Preise umzuwandeln
+- und zum Schluss wird der Startpreis der Aktie mit den generierten Preisen multipliziert um die finalen Aktienpreise zu erhalten

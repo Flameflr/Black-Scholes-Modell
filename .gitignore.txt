@@ -1,5 +1,0 @@
-.vs/
-*.suo
-*.user
-*.VC.db
-*.VC.opendb
